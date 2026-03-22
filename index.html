@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELIM JANG</title>
+
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+    <style>
+        body { 
+            font-family: 'Pretendard', sans-serif;
+            margin: 0; 
+            padding: 0;
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            background-color: #111; 
+            color: #ececec; 
+            overflow: hidden; 
+            position: relative; 
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; 
+            transform: translateY(-4rem); 
+            transition: transform 0.3s ease; 
+        }
+
+        h1 { 
+            font-size: 6rem; 
+            font-weight: 800;
+            margin: 0 0 2rem 0; 
+            letter-spacing: -0.05em; 
+            line-height: 1;
+            cursor: default; 
+        }
+
+        h1 span.letter {
+            display: inline-block; 
+            transition: all 0.2s ease;
+            color: #ececec; 
+        }
+
+        h1 span.letter:hover {
+            color: #ffffff; 
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6); 
+            transform: translateY(-5px); 
+        }
+
+        .space {
+            display: inline-block;
+            width: 0rem; 
+        }
+
+        /* 버튼 그룹: 오른쪽 정렬 유지 */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem; 
+            align-items: flex-end;
+        }
+
+        /* 각 줄 레이아웃: 텍스트와 버튼 사이 간격 유지 */
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem; 
+        }
+
+        /* 텍스트와 화살표 영역: 오른쪽 정렬을 위해 텍스트 정렬 설정 */
+        .label-box {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #999;
+            text-align: right;
+        }
+
+        /* 텍스트 내용 자체도 오른쪽으로 밀착 */
+        .label-text {
+            min-width: 100px; /* PORTFOLIO 길이에 맞춰 최소 너비 설정 */
+            text-align: right;
+        }
+
+        .btn { 
+            display: inline-block; 
+            padding: 0.6rem 1.5rem; 
+            background-color: #ececec; 
+            color: #111; 
+            text-decoration: none; 
+            border-radius: 30px; 
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            transition: all 0.2s ease;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .btn:hover { 
+            background-color: #fff; 
+            transform: translateY(-2px); 
+            box-shadow: 0 5px 15px rgba(255,255,255,0.1);
+        }
+
+        /* 고양이 및 말풍선 스타일 */
+        .cat-highway {
+            position: fixed; 
+            bottom: 3rem; 
+            left: 0;
+            width: 100%;
+            height: 150px; 
+            pointer-events: none; 
+        }
+
+        .cat-box {
+            position: absolute;
+            bottom: 0;
+            animation: driveRight 12s linear infinite; 
+            pointer-events: auto; 
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .cat-img {
+            height: 80px; 
+            width: auto;
+            display: block;
+        }
+
+        .bubble {
+            position: absolute;
+            top: -55px; 
+            background-color: #fff;
+            color: #111;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            white-space: nowrap;
+            opacity: 0; 
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #fff;
+        }
+
+        .cat-box:hover .bubble {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cat-box:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes driveRight {
+            0% { transform: translateX(-400px); } 
+            100% { transform: translateX(100vw); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3.5rem; }
+            .label-text { min-width: 80px; font-size: 1.1rem; }
+            .btn { font-size: 0.9rem; padding: 0.5rem 1.2rem; min-width: 80px; }
+            .cat-highway { bottom: 1.5rem; height: 100px; } 
+            .cat-img { height: 50px; }
+            .bubble { top: -45px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>
+            <span class="letter">S</span><span class="letter">E</span><span class="letter">L</span><span class="letter">I</span><span class="letter">M</span>
+            <span class="space"></span> 
+            <span class="letter">J</span><span class="letter">A</span><span class="letter">N</span><span class="letter">G</span>
+        </h1>
+        
+        <div class="button-group">
+            <div class="row">
+                <div class="label-box">
+                    <span class="label-text">CV</span>
+                    <span>&rarr;</span>
+                </div>
+                <a href="SelimJang_CV.pdf" class="btn" download>Download</a>
+            </div>
+            <div class="row">
+                <div class="label-box">
+                    <span class="label-text">Portfolio</span>
+                    <span>&rarr;</span>
+                </div>
+                <a href="SelimJang_PF.pdf" class="btn" download>Download</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="cat-highway">
+        <a href="SelimJang_PF.pdf" class="cat-box" download>
+            <div class="bubble">Download Portfolio!</div>
+            <img src="cat.png" alt="cat" class="cat-img">
+        </a>
+    </div>
+
+</body>
+</html>
